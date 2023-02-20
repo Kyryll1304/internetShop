@@ -87,13 +87,54 @@ for (let i = 0; i < infoTabletsBtn.length; i++) {
 }
 for (let i = 0; i < buyBtn.length; i++) {
   buyBtn[i].addEventListener("click", function () {
+    let details = document.getElementById("order-wrap");
     let current = document.getElementsByClassName("info-active");
+
     if (current.length > 0) {
-      alert("Added to cart");
-      current[0].className = current[0].className.replace(
-        "info-active",
-        "info-block"
-      );
+      details.classList.remove("info-block");
+      details.classList.add("order-active");
     }
   });
 }
+document
+  .getElementById("submit-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let name = document.forms["myForm"]["name"].value;
+    let city = document.forms["myForm"]["city"].value;
+    let postOffice = document.forms["myForm"]["post-office"].value;
+    let dropdown = document.forms["myForm"]["dropdown"].value;
+    let quantity = document.forms["myForm"]["quantity"].value;
+
+    const activeBlock = document.querySelector(".info-active");
+    const title = activeBlock.querySelector("h2").innerHTML;
+    const text = activeBlock.querySelector("p").innerHTML;
+
+    if (
+      name == "" ||
+      city == "" ||
+      postOffice == "" ||
+      dropdown == "" ||
+      quantity == ""
+    ) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    let postOfficePattern = /^\d+$/;
+    if (!postOfficePattern.test(postOffice)) {
+      alert("Please enter a valid number in the post office field.");
+      return;
+    }
+
+    if (dropdown != "option1" && dropdown != "option2") {
+      alert("Please select a valid option from the dropdown menu.");
+      return;
+    }
+
+    alert(
+      `Назва: ${title}\nОпис: ${text}\nПІБ: ${name}\nМісто: ${city}\nВідділення НП: ${postOffice} ітд.`
+    );
+    document.getElementById("myForm").submit();
+  });

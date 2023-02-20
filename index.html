@@ -186,7 +186,43 @@
           <button class="buy-btn glow-on-hover green">Buy</button>
         </div>
       </div>
+      <div id="order-wrap" class="info-block">
+        <h1>Заповніть дані для доставки:</h1>
+        <form id="myForm">
+          <label for="name">ПІБ:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="city">Місто:</label>
+          <input type="text" id="city" name="city" required />
+
+          <label for="post-office">Відділення пошти:</label>
+          <input type="text" id="post-office" name="post-office" required />
+
+          <label for="dropdown">Оберіть варіант оплати:</label>
+          <select id="dropdown" name="dropdown">
+            <option value="">Варіант оплати</option>
+            <option value="option1">Передоплата</option>
+            <option value="option2">Післяплата</option>
+          </select>
+
+          <label for="quantity">Кількість:</label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="10"
+            required
+          />
+
+          <label for="comments">Комментар:</label>
+          <textarea id="comments" name="comments" rows="4"></textarea>
+
+          <button type="submit" id="submit-button">Підтвердити</button>
+        </form>
+      </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
