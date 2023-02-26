@@ -14,6 +14,9 @@
         <button id="phones-btn" class="glow-on-hover">Телефони</button>
         <button id="laptops-btn" class="glow-on-hover">Ноутбуки</button>
         <button id="tablets-btn" class="glow-on-hover">Планшети</button>
+        <button id="orders-btn" class="glow-on-hover order-btn">
+          Мої замовлення
+        </button>
       </div>
       <div id="phones" class="items-wrap">
         <div class="card">
@@ -156,33 +159,36 @@
       <div id="info-phone" class="info-block">
         <div class="card-ext">
           <img src="img/phone.jpeg" />
-          <h2>Phone</h2>
+          <h2 class="name">Phone</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
             officia laboriosam expedita itaque quas ducimus.
           </p>
+          <h3 class="price">1000$</h3>
           <button class="buy-btn glow-on-hover green">Buy</button>
         </div>
       </div>
       <div id="info-laptops" class="info-block">
         <div class="card-ext">
           <img src="img/laptop.webp" />
-          <h2>Laptop</h2>
+          <h2 class="name">Laptop</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
             officia laboriosam expedita itaque quas ducimus.
           </p>
+          <h3 class="price">1000$</h3>
           <button class="buy-btn glow-on-hover green">Buy</button>
         </div>
       </div>
       <div id="info-tablets" class="info-block">
         <div class="card-ext">
           <img src="img/tablet.jpeg" />
-          <h2>Tablet</h2>
+          <h2 class="name">Tablet</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
             officia laboriosam expedita itaque quas ducimus.
           </p>
+          <h3 class="price">1000$</h3>
           <button class="buy-btn glow-on-hover green">Buy</button>
         </div>
       </div>
@@ -207,6 +213,7 @@
 
           <label for="quantity">Кількість:</label>
           <input
+            class="quantity"
             type="number"
             id="quantity"
             name="quantity"
@@ -221,6 +228,7 @@
           <button type="submit" id="submit-button">Підтвердити</button>
         </form>
       </div>
+      <div class="orders-container"><h2>Мої замовлення:</h2></div>
     </div>
 
     <script src="script.js"></script>

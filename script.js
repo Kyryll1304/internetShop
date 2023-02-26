@@ -132,9 +132,76 @@ document
       alert("Please select a valid option from the dropdown menu.");
       return;
     }
+    const order = {
+      id: new Date().getTime(),
+      title: title,
+      text: text,
+      name: name,
+      city: city,
+      postOffice: postOffice,
+      dropdown: dropdown,
+      quantity: quantity,
+    };
 
-    alert(
-      `Назва: ${title}\nОпис: ${text}\nПІБ: ${name}\nМісто: ${city}\nВідділення НП: ${postOffice} ітд.`
-    );
-    document.getElementById("myForm").submit();
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    const ordersContainer = document.querySelector(".orders-container");
+    const orderDiv = document.createElement("div");
+    orderDiv.classList.add("order");
+
+    const titleEl = document.createElement("h3");
+    titleEl.innerHTML = title;
+    orderDiv.appendChild(titleEl);
+
+    const textEl = document.createElement("p");
+    textEl.innerHTML = text;
+    orderDiv.appendChild(textEl);
+
+    const idEL = document.createElement("p");
+    idEL.innerHTML = order.id;
+    orderDiv.appendChild(idEL);
+
+    const nameEl = document.createElement("p");
+    nameEl.innerHTML = `Name: ${name}`;
+    orderDiv.appendChild(nameEl);
+
+    const cityEl = document.createElement("p");
+    cityEl.innerHTML = `City: ${city}`;
+    orderDiv.appendChild(cityEl);
+
+    const postOfficeEl = document.createElement("p");
+    postOfficeEl.innerHTML = `Post Office: ${postOffice}`;
+    orderDiv.appendChild(postOfficeEl);
+
+    const dropdownEl = document.createElement("p");
+    dropdownEl.innerHTML = `Dropdown: ${dropdown}`;
+    orderDiv.appendChild(dropdownEl);
+
+    const quantityEl = document.createElement("p");
+    quantityEl.innerHTML = `Quantity: ${quantity}`;
+    orderDiv.appendChild(quantityEl);
+
+    ordersContainer.appendChild(orderDiv);
+
+    const ordersTabButton = document.querySelector(".order-btn");
+    ordersTabButton.classList.toggle("show");
+
+    alert("Order submitted successfully.");
+    document.getElementById("myForm").reset();
+
+    let details = document.getElementById("order-wrap");
+    let current = document.getElementsByClassName("info-active");
+
+    if (current.length > 0) {
+      details.classList.remove("order-active");
+      details.classList.add("info-block");
+    }
   });
+
+let myOrdersBtn = document.querySelector(".order-btn");
+myOrdersBtn.addEventListener("click", () => {
+  let ordersBlock = document.querySelector(".orders-container");
+  ordersBlock.classList.toggle("show");
+});

@@ -193,3 +193,18 @@ img {
   flex-wrap: wrap;
   gap: 20px;
 }
+.orders-container {
+  padding: 2%;
+  background-color: white;
+  border-radius: 20px;
+  display: none;
+}
+.orders-container.show {
+  display: block;
+}
+.order-btn {
+  display: none;
+}
+.order-btn.show {
+  display: block;
+}
