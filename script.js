@@ -183,6 +183,11 @@ document
     quantityEl.innerHTML = `Quantity: ${quantity}`;
     orderDiv.appendChild(quantityEl);
 
+    const delBtn = document.createElement("button", "Delete");
+    delBtn.innerText = "Видалити замовлення";
+    delBtn.classList.add("delete-btn");
+    orderDiv.appendChild(delBtn);
+
     ordersContainer.appendChild(orderDiv);
 
     const ordersTabButton = document.querySelector(".order-btn");
@@ -204,4 +209,22 @@ let myOrdersBtn = document.querySelector(".order-btn");
 myOrdersBtn.addEventListener("click", () => {
   let ordersBlock = document.querySelector(".orders-container");
   ordersBlock.classList.toggle("show");
+});
+
+const ordersContainer = document.querySelector(".orders-container");
+
+ordersContainer.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete-btn")) {
+    const orderDiv = event.target.closest(".order");
+
+    orderDiv.remove();
+
+    const id = orderDiv.getAttribute("data-order-id");
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders = orders.filter((order) => order.id !== Number(id));
+    localStorage.setItem("orders", JSON.stringify(orders));
+  } else {
+    let ordersBlock = document.querySelector(".orders-container");
+    ordersBlock.classList.remove("show");
+  }
 });
